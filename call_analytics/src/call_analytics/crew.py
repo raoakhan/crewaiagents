@@ -82,9 +82,12 @@ class CallAnalytics():
 
         from call_analytics.listeners import TraceListener  # noqa: WPS433
 
+        from call_analytics.tools import TranscribeTool, SentimentTool, InsightTool  # noqa: WPS433
+
         return Crew(
             agents=self.agents,  # Automatically created by the @agent decorator
             tasks=self.tasks,  # Automatically created by the @task decorator
+            tools=[TranscribeTool(), SentimentTool(), InsightTool()],
             listeners=[TraceListener()],
             process=Process.sequential,
             verbose=True,
