@@ -14,7 +14,7 @@ class SentimentToolInput(BaseModel):
 class SentimentTool(BaseTool):
     """LLM-based sentiment analysis returning JSON."""
 
-    name: str = "sentiment_analysis"
+    name: str = "SentimentTool"
     description: str = "Analyse text sentiment and return JSON {sentiment, score}."
     args_schema: Type[BaseModel] = SentimentToolInput
 

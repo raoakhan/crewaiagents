@@ -14,7 +14,7 @@ class TranscribeToolInput(BaseModel):
 class TranscribeTool(BaseTool):
     """Tool that sends audio to the OpenAI Whisper API and returns a transcript."""
 
-    name: str = "transcribe_audio"
+    name: str = "TranscribeTool"
     description: str = (
         "Convert base64-encoded audio bytes into a text transcript using OpenAI's Whisper endpoint."
     )
