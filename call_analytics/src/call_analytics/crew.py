@@ -1,5 +1,5 @@
 from crewai import Agent, Crew, Process, Task
-from crewai.project import CrewBase, agent, crew, task
+from crewai.project import CrewBase, agent, crew, task, tool
 from crewai.agents.agent_builder.base_agent import BaseAgent
 from typing import List
 # If you want to run a snippet of code before or after the crew starts,
@@ -46,6 +46,25 @@ class CallAnalytics():
             config=self.agents_config['insights_analyst'],  # type: ignore[index]
             verbose=True
         )
+
+    # ===== Tool Providers =====
+
+    @tool
+    def transcribe_tool(self):
+        from call_analytics.tools import TranscribeTool  # noqa: WPS433
+        return TranscribeTool()
+
+    @tool
+    def sentiment_tool(self):
+        from call_analytics.tools import SentimentTool  # noqa: WPS433
+        return SentimentTool()
+
+    @tool
+    def insight_tool(self):
+        from call_analytics.tools import InsightTool  # noqa: WPS433
+        return InsightTool()
+
+    # ===== Tasks =====
 
     # To learn more about structured task outputs,
     # task dependencies, and task callbacks, check out the documentation:
