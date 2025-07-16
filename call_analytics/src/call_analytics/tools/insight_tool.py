@@ -16,7 +16,7 @@ class InsightToolInput(BaseModel):
 class InsightTool(BaseTool):
     """Extract pain points, compliance issues, escalation triggers as JSON."""
 
-    name: str = "InsightTool"
+    name: str = "insight_tool"
     description: str = (
         "Given transcript, summary, and sentiment analysis, return JSON with "
         "keys pain_points, compliance_issues, escalation_triggers (each list of strings)."

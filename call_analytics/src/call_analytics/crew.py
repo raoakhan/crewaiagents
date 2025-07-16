@@ -87,7 +87,7 @@ class CallAnalytics():
         return Crew(
             agents=self.agents,  # Automatically created by the @agent decorator
             tasks=self.tasks,  # Automatically created by the @task decorator
-            tools=[TranscribeTool(), SentimentTool(), InsightTool()],
+            tools=[TranscribeTool(), SentimentTool(), InsightTool()],  # instances, names already set to snake_case
             listeners=[TraceListener()],
             process=Process.sequential,
             verbose=True,
