@@ -1,5 +1,7 @@
 transcriber:
   role: Call Transcriber
+  tools:
+    - transcribe_audio
   goal: Convert raw customer-service call audio into an accurate text transcript
   backstory: |
     You are a speech-to-text specialist leveraging state-of-the-art ASR models
@@ -14,12 +16,16 @@ summariser:
 
 sentiment_analyst:
   role: Sentiment Analyst
+  tools:
+    - sentiment_analysis
   goal: Tag each speaker turn with sentiment scores and compute overall customer tone
   backstory: |
     You have deep expertise in sentiment analysis and emotion detection.
 
 insights_analyst:
   role: Conversation Insight Analyst
+  tools:
+    - extract_insights
   goal: Detect customer pain points, escalation triggers, and compliance breaches
   backstory: |
     You mine transcripts for actionable insights that improve customer
