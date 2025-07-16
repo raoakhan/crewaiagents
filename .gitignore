@@ -1,0 +1,6 @@
+# Global ignores for this monorepo
+**/.env
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env*

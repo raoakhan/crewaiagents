@@ -1,0 +1,25 @@
+[project]
+name = "call_analytics"
+version = "0.1.0"
+description = "call_analytics using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]>=0.141.0,<1.0.0",
+    "openai>=1.14.0,<2.0.0",
+    "python-dotenv>=1.0.0,<2.0.0"
+]
+
+[project.scripts]
+call_analytics = "call_analytics.main:run"
+run_crew = "call_analytics.main:run"
+train = "call_analytics.main:train"
+replay = "call_analytics.main:replay"
+test = "call_analytics.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

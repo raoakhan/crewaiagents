@@ -1,0 +1,34 @@
+transcribe_task:
+  description: >
+    Transcribe the provided call audio file into a clean, speaker-separated transcript.
+  expected_output: >
+    A JSON with keys: "transcript" (string) and "speaker_turns" (list of {speaker, text}).
+  agent: transcriber
+
+summarise_task:
+  description: >
+    Using the transcript, generate an executive summary and bullet list of key moments.
+  expected_output: >
+    Markdown: A paragraph summary followed by a bullet list of key moments.
+  agent: summariser
+  depends_on:
+    - transcribe_task
+
+sentiment_task:
+  description: >
+    For each speaker turn, assign sentiment (positive, neutral, negative) and overall sentiment score.
+  expected_output: >
+    JSON list of {turn_id, sentiment, score} and overall scores.
+  agent: sentiment_analyst
+  depends_on:
+    - transcribe_task
+
+insights_task:
+  description: >
+    Analyse transcript, summary, and sentiment data to extract customer pain points, compliance breaches, and escalation triggers.
+  expected_output: >
+    JSON with lists: "pain_points", "compliance_issues", "escalation_triggers".
+  agent: insights_analyst
+  depends_on:
+    - summarise_task
+    - sentiment_task
